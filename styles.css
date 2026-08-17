@@ -5,17 +5,17 @@
 }
 
 :root {
-  --color-espresso: #2e1e15;
-  --color-bark: #4a3324;
-  --color-clay: #b5652d;
-  --color-clay-text: #a8551f;
-  --color-clay-text-dark: #d68a4f;
-  --color-cream: #f6efe4;
-  --color-paper: #fffbf3;
+  --color-espresso: #26241f;
+  --color-bark: #3a382f;
+  --color-clay: #5f6e4f;
+  --color-clay-text: #4f5c40;
+  --color-clay-text-dark: #8fa178;
+  --color-cream: #f2efe4;
+  --color-paper: #faf8f1;
   --color-moss: #5c6b4f;
-  --color-text: #2e1e15;
-  --color-text-muted: #6b5c4d;
-  --color-line: rgba(46, 30, 21, 0.12);
+  --color-text: #26241f;
+  --color-text-muted: #635e52;
+  --color-line: rgba(38, 36, 31, 0.12);
 
   --font-display: "Instrument Serif", Georgia, serif;
   --font-body: "Instrument Sans", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
