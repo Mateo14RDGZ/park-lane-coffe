@@ -915,6 +915,7 @@ a { color: inherit; }
   .section-lede { font-size: 1.05rem; }
 
   .menu { padding: 5.5rem 2rem; }
+  .menu-col-title { text-align: left; }
   .menu-row { flex-direction: row; align-items: baseline; gap: 0.6rem; }
   .menu-leader { display: block; }
   .menu-desc { text-align: right; max-width: 240px; }
@@ -973,7 +974,6 @@ a { color: inherit; }
 
 .manifesto-text,
 .menu-header,
-.menu-col,
 .hours-status-block,
 .contact-text {
   text-align: center;
@@ -987,10 +987,16 @@ a { color: inherit; }
   margin-right: auto;
 }
 
-.menu-row { align-items: center; }
-.menu-name, .menu-desc { text-align: center; }
-
 .contact-links { justify-content: center; }
+
+/* Menu rows only stack+center at the narrowest widths; from 640px up
+   they switch to a dotted-leader row, so the column title should sit
+   flush with the row's left edge instead of floating centered above it. */
+@media (max-width: 639.98px) {
+  .menu-col { text-align: center; }
+  .menu-row { align-items: center; }
+  .menu-name, .menu-desc { text-align: center; }
+}
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
