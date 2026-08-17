@@ -1,12 +1,4 @@
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const fineHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-/* ---------- Preloader ---------- */
-const preloader = document.getElementById('preloader');
-window.addEventListener('load', () => {
-  const delay = reduceMotion ? 0 : 900;
-  setTimeout(() => preloader?.classList.add('is-hidden'), delay);
-});
 
 /* ---------- Smooth anchor scroll ---------- */
 document.querySelectorAll('a[href^="#"], [data-scroll-to]').forEach(el => {
@@ -42,51 +34,6 @@ navToggle?.addEventListener('click', () => {
   const isOpen = navOverlay.classList.contains('is-open');
   isOpen ? closeNavOverlay() : openNavOverlay();
 });
-
-/* ---------- Custom cursor ---------- */
-if (fineHover) {
-  const dot = document.querySelector('.cursor-dot');
-  const ring = document.querySelector('.cursor-ring');
-  let mouseX = 0, mouseY = 0;
-  let ringX = 0, ringY = 0;
-
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
-  });
-
-  function tick() {
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
-    ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-
-  document.querySelectorAll('a, button, .magnetic').forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('is-active'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('is-active'));
-  });
-} else {
-  document.querySelector('.cursor-dot')?.remove();
-  document.querySelector('.cursor-ring')?.remove();
-}
-
-/* ---------- Magnetic buttons ---------- */
-if (fineHover && !reduceMotion) {
-  document.querySelectorAll('.magnetic').forEach(el => {
-    el.addEventListener('mousemove', (e) => {
-      const rect = el.getBoundingClientRect();
-      const dx = e.clientX - (rect.left + rect.width / 2);
-      const dy = e.clientY - (rect.top + rect.height / 2);
-      el.style.transform = `translate(${dx * 0.25}px, ${dy * 0.35}px)`;
-    });
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = 'translate(0, 0)';
-    });
-  });
-}
 
 /* ---------- Scroll-linked pour (transform-only, rAF throttled) ---------- */
 const manifesto = document.querySelector('.manifesto-grid');

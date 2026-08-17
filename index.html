@@ -5,21 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Park Lane Coffee — South Melbourne</title>
   <meta name="description" content="Cozy South Melbourne cafe since 2009 — real coffee, tea made to order, and a toastie cabinet locals can't quit. 387 Clarendon St, South Melbourne VIC.">
+  <link rel="canonical" href="https://mateo14rdgz.github.io/park-lane-coffe/">
+  <meta name="theme-color" content="#2e1e15">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Park Lane Coffee">
+  <meta property="og:title" content="Park Lane Coffee — South Melbourne">
+  <meta property="og:description" content="Cozy South Melbourne cafe since 2009 — real coffee, tea made to order, and a toastie cabinet locals can't quit. 387 Clarendon St, South Melbourne VIC.">
+  <meta property="og:url" content="https://mateo14rdgz.github.io/park-lane-coffe/">
+  <meta property="og:image" content="https://mateo14rdgz.github.io/park-lane-coffe/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Park Lane Coffee — South Melbourne">
+  <meta name="twitter:description" content="Cozy South Melbourne cafe since 2009 — real coffee, tea made to order, and a toastie cabinet locals can't quit.">
+  <meta name="twitter:image" content="https://mateo14rdgz.github.io/park-lane-coffe/og-image.png">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-  <div class="cursor-dot" aria-hidden="true"></div>
-  <div class="cursor-ring" aria-hidden="true"></div>
-
-  <div class="preloader" id="preloader">
-    <div class="preloader-mark">Park Lane</div>
-    <div class="preloader-rule"><span></span></div>
-    <div class="preloader-sub">South Melbourne, Victoria</div>
-  </div>
 
   <nav class="nav">
     <a href="#top" class="nav-logo">
@@ -52,6 +62,7 @@
     </div>
   </div>
 
+  <main>
   <header class="hero" id="top">
     <div class="hero-inner">
       <p class="hero-kicker">South Melbourne · Since 2009</p>
@@ -64,8 +75,8 @@
       </p>
       <p class="hero-sub">Tucked into a quiet corner of South Melbourne since 2009 — real coffee, tea made properly, and a toastie cabinet regulars can't quit.</p>
       <div class="hero-cta">
-        <button class="btn btn-primary magnetic" data-scroll-to="#menu">See the menu</button>
-        <button class="btn btn-secondary magnetic" data-scroll-to="#contact">Find us</button>
+        <button class="btn btn-primary" data-scroll-to="#menu">View Menu</button>
+        <button class="btn btn-secondary" data-scroll-to="#contact">Get Directions</button>
       </div>
     </div>
     <div class="scroll-cue">
@@ -75,7 +86,7 @@
   </header>
 
   <div class="trust-bar">
-    <p><span class="trust-stars">★ 4.3</span> on Google · 190 reviews · South Melbourne since 2009</p>
+    <p><span class="trust-stars">★ 4.4</span> on Google · 191 reviews · South Melbourne since 2009</p>
   </div>
 
   <section id="about" class="manifesto">
@@ -203,13 +214,14 @@
   <section id="contact" class="contact">
     <div class="contact-inner">
       <div class="contact-text">
-        <p class="section-kicker">Find us</p>
+        <p class="section-kicker">Come visit us</p>
         <h2>387 Clarendon St<br>South Melbourne VIC 3205</h2>
         <p class="section-lede">Dine-in, takeaway or delivery — first come, first served for a table. LGBTQ+ friendly.</p>
         <div class="contact-links">
-          <a href="https://www.instagram.com/parklanecoffee/" target="_blank" rel="noopener" class="contact-link magnetic">Instagram <span>↗</span></a>
-          <a href="tel:+61490418134" class="contact-link magnetic">Call <span>↗</span></a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Cafe+Park+Lane+387+Clarendon+St+South+Melbourne" target="_blank" rel="noopener" class="contact-link magnetic">Directions <span>↗</span></a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Cafe+Park+Lane+387+Clarendon+St+South+Melbourne" target="_blank" rel="noopener" class="contact-link">Get Directions <span>↗</span></a>
+          <a href="#menu" class="contact-link">View Menu</a>
+          <a href="https://www.instagram.com/parklanecoffee/" target="_blank" rel="noopener" class="contact-link">Instagram <span>↗</span></a>
+          <a href="tel:+61490418134" class="contact-link">Call <span>↗</span></a>
         </div>
       </div>
       <div class="contact-map">
@@ -222,19 +234,33 @@
       </div>
     </div>
   </section>
+  </main>
 
   <footer class="footer">
     <div class="footer-inner">
-      <a href="#top" class="footer-logo">
-        <svg viewBox="0 0 32 32" class="footer-logo-mark" aria-hidden="true">
-          <path d="M6 12h17l-1.4 11.2A3 3 0 0 1 18.6 26H12.4a3 3 0 0 1-3-2.8L8 12z" fill="none" stroke="currentColor" stroke-width="1.6"/>
-          <path d="M23 14c3 0 5 1.8 5 4.3s-2 4.3-5 4.1" fill="none" stroke="currentColor" stroke-width="1.6"/>
-        </svg>
-        <span>Park Lane</span>
-      </a>
+      <div class="footer-brand">
+        <a href="#top" class="footer-logo">
+          <svg viewBox="0 0 32 32" class="footer-logo-mark" aria-hidden="true">
+            <path d="M6 12h17l-1.4 11.2A3 3 0 0 1 18.6 26H12.4a3 3 0 0 1-3-2.8L8 12z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M23 14c3 0 5 1.8 5 4.3s-2 4.3-5 4.1" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+          <span>Park Lane</span>
+        </a>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/parklanecoffee/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="tel:+61490418134" aria-label="Call">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 4h3l1.4 4-2 1.5a12 12 0 0 0 5.5 5.5l1.5-2 4 1.4v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 6.2 2 2 0 0 1 6.6 4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Cafe+Park+Lane+387+Clarendon+St+South+Melbourne" target="_blank" rel="noopener" aria-label="Directions">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8 2 5 5.2 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.8-3-7-7-7z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </a>
+        </div>
+      </div>
       <div class="footer-meta">
-        <p>© 2026 Park Lane Coffee, South Melbourne</p>
-        <p>387 Clarendon St, Victoria</p>
+        <p>387 Clarendon St, South Melbourne VIC 3205</p>
+        <p class="footer-fine">Website concept for Cafe Park Lane · <a href="https://mateordgz.dev" target="_blank" rel="noopener">Website by Mateo Rodríguez</a></p>
       </div>
     </div>
   </footer>
