@@ -140,20 +140,22 @@ if (reduceMotion) {
   revealTargets.forEach(el => el.classList.add('is-visible'));
 }
 
-/* ---------- Live open/closed status (Australia/Hobart) ---------- */
+/* ---------- Live open/closed status (Australia/Melbourne) ---------- */
+const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
 const hoursSchedule = {
-  1: [7 * 60, 16 * 60],
-  2: [7 * 60, 16 * 60],
-  3: [7 * 60, 16 * 60],
-  4: [7 * 60, 16 * 60],
-  5: [7 * 60, 16 * 60],
-  6: [7 * 60, 14 * 60 + 30],
-  0: [8 * 60, 14 * 60],
+  1: [7 * 60, 14 * 60],
+  2: [7 * 60, 14 * 60],
+  3: [7 * 60, 14 * 60],
+  4: [7 * 60, 14 * 60],
+  5: [7 * 60, 14 * 60],
+  6: [8 * 60, 14 * 60],
+  0: null,
 };
 
-function getHobartNow() {
+function getMelbourneNow() {
   const parts = new Intl.DateTimeFormat('en-US', {
-    timeZone: 'Australia/Hobart',
+    timeZone: 'Australia/Melbourne',
     weekday: 'short',
     hour: 'numeric',
     minute: 'numeric',
@@ -179,6 +181,16 @@ function formatTime(mins) {
   return `${h12}:${String(m).padStart(2, '0')} ${period}`;
 }
 
+function nextOpening(fromDay) {
+  for (let i = 1; i <= 7; i++) {
+    const day = (fromDay + i) % 7;
+    if (hoursSchedule[day]) {
+      return { day, open: hoursSchedule[day][0], isTomorrow: i === 1 };
+    }
+  }
+  return null;
+}
+
 function updateStatus() {
   const statusDot = document.getElementById('statusDot');
   const statusText = document.getElementById('statusText');
@@ -186,9 +198,9 @@ function updateStatus() {
   const hoursNote = document.getElementById('hoursNote');
   const rows = document.querySelectorAll('#hoursTable tr');
 
-  const { day, minutes } = getHobartNow();
-  const [open, close] = hoursSchedule[day];
-  const isOpen = minutes >= open && minutes < close;
+  const { day, minutes } = getMelbourneNow();
+  const today = hoursSchedule[day];
+  const isOpen = today ? (minutes >= today[0] && minutes < today[1]) : false;
 
   rows.forEach(row => {
     row.classList.toggle('is-today', parseInt(row.dataset.day, 10) === day);
@@ -202,12 +214,17 @@ function updateStatus() {
   if (hoursHeadline && hoursNote) {
     if (isOpen) {
       hoursHeadline.textContent = 'Open now';
-      hoursNote.textContent = `Today until ${formatTime(close)} — Hobart time.`;
+      hoursNote.textContent = `Today until ${formatTime(today[1])} — Melbourne time.`;
     } else {
       hoursHeadline.textContent = 'Closed';
-      hoursNote.textContent = minutes < open
-        ? `Opens today at ${formatTime(open)} — Hobart time.`
-        : `Opens tomorrow — see the week below.`;
+      if (today && minutes < today[0]) {
+        hoursNote.textContent = `Opens today at ${formatTime(today[0])} — Melbourne time.`;
+      } else {
+        const next = nextOpening(day);
+        hoursNote.textContent = next
+          ? `Opens ${next.isTomorrow ? 'tomorrow' : dayNames[next.day]} at ${formatTime(next.open)} — Melbourne time.`
+          : 'See the week below.';
+      }
     }
   }
 }
