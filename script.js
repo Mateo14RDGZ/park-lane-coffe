@@ -1,98 +1,13 @@
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const header = document.getElementById('siteHeader');
+const headerTime = document.getElementById('headerTime');
+const headerNote = document.getElementById('headerNote');
+const visitTime = document.getElementById('visitTime');
+const visitNote = document.getElementById('visitNote');
+const visitHeadline = document.getElementById('visitHeadline');
+const hourHand = document.getElementById('hourHand');
+const minuteHand = document.getElementById('minuteHand');
 
-/* ---------- Smooth anchor scroll ---------- */
-document.querySelectorAll('a[href^="#"], [data-scroll-to]').forEach(el => {
-  el.addEventListener('click', function (e) {
-    const href = this.getAttribute('href') || this.dataset.scrollTo;
-    if (!href || !href.startsWith('#')) return;
-    const target = document.querySelector(href);
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-      closeNavOverlay();
-    }
-  });
-});
-
-/* ---------- Nav overlay ---------- */
-const navToggle = document.getElementById('navToggle');
-const navOverlay = document.getElementById('navOverlay');
-
-function openNavOverlay() {
-  navOverlay.classList.add('is-open');
-  navToggle.setAttribute('aria-expanded', 'true');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeNavOverlay() {
-  navOverlay.classList.remove('is-open');
-  navToggle.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
-}
-
-navToggle?.addEventListener('click', () => {
-  const isOpen = navOverlay.classList.contains('is-open');
-  isOpen ? closeNavOverlay() : openNavOverlay();
-});
-
-/* ---------- Scroll-linked pour (transform-only, rAF throttled) ---------- */
-const manifesto = document.querySelector('.manifesto-grid');
-const liquid = document.querySelector('.pour-liquid');
-const pourLabels = document.querySelectorAll('.pour-label');
-let ticking = false;
-
-function updatePour() {
-  if (!manifesto || !liquid) return;
-  const rect = manifesto.getBoundingClientRect();
-  const vh = window.innerHeight;
-  // Fill starts as soon as the section is barely on screen and finishes
-  // well within one viewport of scrolling, regardless of section height,
-  // so it doesn't lag behind while reading the text next to it.
-  const startTrigger = vh * 0.92;
-  const endTrigger = vh * 0.15;
-  const progress = Math.min(1, Math.max(0, (startTrigger - rect.top) / (startTrigger - endTrigger)));
-  liquid.style.transform = `scaleY(${progress})`;
-
-  const stage = progress < 0.34 ? 0 : progress < 0.7 ? 1 : 2;
-  pourLabels.forEach((label, i) => label.classList.toggle('is-active', i === stage));
-
-  ticking = false;
-}
-
-function onScroll() {
-  if (!ticking && !reduceMotion) {
-    requestAnimationFrame(updatePour);
-    ticking = true;
-  }
-}
-
-if (!reduceMotion) {
-  window.addEventListener('scroll', onScroll, { passive: true });
-  updatePour();
-} else if (liquid) {
-  liquid.style.transform = 'scaleY(1)';
-}
-
-/* ---------- Reveal on scroll (review cards, menu rows) ---------- */
-const revealTargets = document.querySelectorAll('.review-card, .menu-row');
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('is-visible'), i * 60);
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-
-revealTargets.forEach(el => revealObserver.observe(el));
-
-if (reduceMotion) {
-  revealTargets.forEach(el => el.classList.add('is-visible'));
-}
-
-/* ---------- Live open/closed status (Australia/Melbourne) ---------- */
 const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
 const hoursSchedule = {
   1: [7 * 60, 14 * 60],
   2: [7 * 60, 14 * 60],
@@ -103,81 +18,97 @@ const hoursSchedule = {
   0: null,
 };
 
-function getMelbourneNow() {
+function melbourneParts() {
   const parts = new Intl.DateTimeFormat('en-US', {
     timeZone: 'Australia/Melbourne',
     weekday: 'short',
-    hour: 'numeric',
-    minute: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
     hour12: false,
   }).formatToParts(new Date());
-
-  const map = {};
-  parts.forEach(p => { map[p.type] = p.value; });
+  const values = Object.fromEntries(parts.map(part => [part.type, part.value]));
   const dayMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
-  let hour = parseInt(map.hour, 10);
-  if (hour === 24) hour = 0;
-  return {
-    day: dayMap[map.weekday],
-    minutes: hour * 60 + parseInt(map.minute, 10),
-  };
+  return { day: dayMap[values.weekday], hour: Number(values.hour) % 24, minute: Number(values.minute) };
 }
 
-function formatTime(mins) {
-  const h = Math.floor(mins / 60);
-  const m = mins % 60;
-  const period = h >= 12 ? 'PM' : 'AM';
-  const h12 = h % 12 === 0 ? 12 : h % 12;
-  return `${h12}:${String(m).padStart(2, '0')} ${period}`;
+function formatTime(minutes) {
+  const hour = Math.floor(minutes / 60);
+  const minute = minutes % 60;
+  const period = hour >= 12 ? 'PM' : 'AM';
+  const hour12 = hour % 12 || 12;
+  return `${hour12}:${String(minute).padStart(2, '0')} ${period}`;
+}
+
+function formatHeadlineTime(minutes) {
+  const hour = Math.floor(minutes / 60);
+  const period = hour >= 12 ? 'PM' : 'AM';
+  return `${hour % 12 || 12} ${period}`;
 }
 
 function nextOpening(fromDay) {
-  for (let i = 1; i <= 7; i++) {
-    const day = (fromDay + i) % 7;
-    if (hoursSchedule[day]) {
-      return { day, open: hoursSchedule[day][0], isTomorrow: i === 1 };
-    }
+  for (let offset = 1; offset <= 7; offset += 1) {
+    const day = (fromDay + offset) % 7;
+    if (hoursSchedule[day]) return { day, open: hoursSchedule[day][0], isTomorrow: offset === 1 };
   }
   return null;
 }
 
-function updateStatus() {
-  const statusDot = document.getElementById('statusDot');
-  const statusText = document.getElementById('statusText');
-  const hoursHeadline = document.getElementById('hoursHeadline');
-  const hoursNote = document.getElementById('hoursNote');
-  const rows = document.querySelectorAll('#hoursTable tr');
-
-  const { day, minutes } = getMelbourneNow();
+function updateMelbourneTime() {
+  const { day, hour, minute } = melbourneParts();
+  const minutes = hour * 60 + minute;
   const today = hoursSchedule[day];
-  const isOpen = today ? (minutes >= today[0] && minutes < today[1]) : false;
+  const isOpen = Boolean(today && minutes >= today[0] && minutes < today[1]);
+  const time = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')} · Melbourne`;
+  let note;
+  let headline;
 
-  rows.forEach(row => {
-    row.classList.toggle('is-today', parseInt(row.dataset.day, 10) === day);
+  if (isOpen) {
+    note = `Open now · today until ${formatTime(today[1])}.`;
+    headline = 'Open now —';
+  } else if (today && minutes < today[0]) {
+    note = `Opening today at ${formatTime(today[0])}.`;
+    headline = `Open at ${formatHeadlineTime(today[0])} —`;
+  } else {
+    const next = nextOpening(day);
+    const nextDay = next.isTomorrow ? 'tomorrow' : dayNames[next.day];
+    note = `Closed · opens ${nextDay} at ${formatTime(next.open)}.`;
+    headline = day === 0 ? 'Closed today —' : 'Closed for today —';
+  }
+
+  if (headerTime) headerTime.textContent = time;
+  if (headerNote) headerNote.textContent = note;
+  if (visitTime) visitTime.textContent = time;
+  if (visitNote) visitNote.textContent = note;
+  if (visitHeadline) visitHeadline.textContent = headline;
+  if (hourHand) hourHand.style.transform = `translateX(-50%) rotate(${(hour % 12) * 30 + minute * .5}deg)`;
+  if (minuteHand) minuteHand.style.transform = `translateX(-50%) rotate(${minute * 6}deg)`;
+
+  document.querySelectorAll('.hours [data-day]').forEach(row => {
+    row.classList.toggle('is-today', Number(row.dataset.day) === day);
   });
-
-  if (statusDot && statusText) {
-    statusDot.classList.toggle('is-open', isOpen);
-    statusText.textContent = isOpen ? 'Open now' : 'Closed';
-  }
-
-  if (hoursHeadline && hoursNote) {
-    if (isOpen) {
-      hoursHeadline.textContent = 'Open now';
-      hoursNote.textContent = `Today until ${formatTime(today[1])} — Melbourne time.`;
-    } else {
-      hoursHeadline.textContent = 'Closed';
-      if (today && minutes < today[0]) {
-        hoursNote.textContent = `Opens today at ${formatTime(today[0])} — Melbourne time.`;
-      } else {
-        const next = nextOpening(day);
-        hoursNote.textContent = next
-          ? `Opens ${next.isTomorrow ? 'tomorrow' : dayNames[next.day]} at ${formatTime(next.open)} — Melbourne time.`
-          : 'See the week below.';
-      }
-    }
-  }
 }
 
-updateStatus();
-setInterval(updateStatus, 60000);
+function updateHeader() {
+  header?.classList.toggle('scrolled', window.scrollY > 24);
+}
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const revealElements = document.querySelectorAll('.reveal:not(.is-visible)');
+
+if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+  revealElements.forEach(element => element.classList.add('is-visible'));
+} else {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: .12, rootMargin: '0px 0px -60px' });
+  revealElements.forEach(element => observer.observe(element));
+}
+
+window.addEventListener('scroll', updateHeader, { passive: true });
+updateHeader();
+updateMelbourneTime();
+setInterval(updateMelbourneTime, 60000);

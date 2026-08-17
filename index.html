@@ -1,270 +1,194 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Park Lane Coffee — South Melbourne</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cafe Park Lane — South Melbourne</title>
   <meta name="description" content="Cozy South Melbourne cafe since 2009 — real coffee, tea made to order, and a toastie cabinet locals can't quit. 387 Clarendon St, South Melbourne VIC.">
+  <meta name="theme-color" content="#17110f">
   <link rel="canonical" href="https://mateo14rdgz.github.io/park-lane-coffe/">
-  <meta name="theme-color" content="#2e1e15">
-
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Park Lane Coffee">
-  <meta property="og:title" content="Park Lane Coffee — South Melbourne">
-  <meta property="og:description" content="Cozy South Melbourne cafe since 2009 — real coffee, tea made to order, and a toastie cabinet locals can't quit. 387 Clarendon St, South Melbourne VIC.">
-  <meta property="og:url" content="https://mateo14rdgz.github.io/park-lane-coffe/">
-  <meta property="og:image" content="https://mateo14rdgz.github.io/park-lane-coffe/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Park Lane Coffee — South Melbourne">
-  <meta name="twitter:description" content="Cozy South Melbourne cafe since 2009 — real coffee, tea made to order, and a toastie cabinet locals can't quit.">
-  <meta name="twitter:image" content="https://mateo14rdgz.github.io/park-lane-coffe/og-image.png">
-
+  <meta property="og:title" content="Cafe Park Lane — South Melbourne">
+  <meta property="og:description" content="Cozy South Melbourne cafe since 2009 — real coffee, tea made to order, and a toastie cabinet locals can't quit.">
+  <meta property="og:image" content="https://mateo14rdgz.github.io/park-lane-coffe/assets/hero.png">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <nav class="nav">
-    <a href="#top" class="nav-logo">
-      <svg viewBox="0 0 32 32" class="nav-logo-mark" aria-hidden="true">
-        <path d="M6 12h17l-1.4 11.2A3 3 0 0 1 18.6 26H12.4a3 3 0 0 1-3-2.8L8 12z" fill="none" stroke="currentColor" stroke-width="1.6"/>
-        <path d="M23 14c3 0 5 1.8 5 4.3s-2 4.3-5 4.1" fill="none" stroke="currentColor" stroke-width="1.6"/>
-      </svg>
-      <span>Park Lane</span>
-    </a>
-    <div class="nav-status">
-      <span class="status-dot" id="statusDot"></span>
-      <span id="statusText">—</span>
-    </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
-      <span class="nav-toggle-line"></span>
-      <span class="nav-toggle-line"></span>
-    </button>
-  </nav>
-
-  <div class="nav-overlay" id="navOverlay">
-    <ul class="overlay-links">
-      <li><a href="#about" class="overlay-link">About</a></li>
-      <li><a href="#menu" class="overlay-link">Menu</a></li>
-      <li><a href="#hours" class="overlay-link">Hours</a></li>
-      <li><a href="#contact" class="overlay-link">Find Us</a></li>
-    </ul>
-    <div class="overlay-footer">
-      <p>387 Clarendon St, South Melbourne VIC 3205</p>
-      <p><a href="https://www.instagram.com/parklanecoffee/" target="_blank" rel="noopener">Instagram</a> · <a href="tel:+61490418134">0490 418 134</a></p>
-    </div>
-  </div>
-
-  <main>
-  <header class="hero" id="top">
-    <div class="hero-inner">
-      <p class="hero-kicker">South Melbourne · Since 2009</p>
-      <h1 class="hero-wordmark">Park Lane</h1>
-      <p class="hero-tagline">
-        <span class="reveal-word">Hidden</span>
-        <span class="reveal-word">gem.</span><br>
-        <span class="reveal-word reveal-em">Honest</span>
-        <span class="reveal-word reveal-em">toasties.</span>
-      </p>
-      <p class="hero-sub">Tucked into a quiet corner of South Melbourne since 2009 — real coffee, tea made properly, and a toastie cabinet regulars can't quit.</p>
-      <div class="hero-cta">
-        <button class="btn btn-primary" data-scroll-to="#menu">View Menu</button>
-        <button class="btn btn-secondary" data-scroll-to="#contact">Get Directions</button>
+  <header class="site-header" id="siteHeader">
+    <nav class="nav-shell" aria-label="Main navigation">
+      <a class="brand" href="#top">Cafe Park Lane</a>
+      <div class="desktop-nav">
+        <a href="#menu">Menu</a>
+        <a href="#cafe">Cafe</a>
+        <a href="#visit">Visit</a>
       </div>
-    </div>
-    <div class="scroll-cue">
-      <span class="scroll-cue-line"></span>
-      <span class="scroll-cue-text">Scroll</span>
-    </div>
+      <div class="time-pill" aria-live="polite">
+        <span class="time-dot"></span>
+        <span id="headerTime">Melbourne</span>
+        <em id="headerNote">The kettle’s resting. See you at 7 AM.</em>
+      </div>
+      <a class="directions-link" href="https://www.google.com/maps/dir/?api=1&destination=Cafe+Park+Lane+387+Clarendon+St+South+Melbourne" target="_blank" rel="noopener">Directions</a>
+    </nav>
   </header>
 
-  <div class="trust-bar">
-    <p><span class="trust-stars">★ 4.4</span> on Google · 191 reviews · South Melbourne since 2009</p>
-  </div>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="heroTitle">
+      <img class="hero-image" src="assets/hero.png" alt="A steaming cup of tea and a toasted sourdough toastie on a sun-drenched marble table at Cafe Park Lane">
+      <div class="hero-shade"></div>
+      <div class="hero-content reveal is-visible">
+        <p class="eyebrow">Clarendon Street · South Melbourne · Since 2009</p>
+        <h1 id="heroTitle">A Hidden Gem <em>on Clarendon</em></h1>
+        <p class="hero-copy">Real tea brewed to order. Toasted sourdough toasties. A cozy, sun-drenched corner where the mornings slow down.</p>
+        <a class="outline-button" href="#menu">Explore the Menu <span></span></a>
+      </div>
+      <a class="scroll-mark" href="#menu" aria-label="Scroll to the menu"><span></span></a>
+    </section>
 
-  <section id="about" class="manifesto">
-    <div class="manifesto-grid">
-      <div class="pour-visual" aria-hidden="true">
-        <div class="pour-glass">
-          <div class="pour-liquid"></div>
-          <div class="pour-shine"></div>
+    <section class="menu-section" id="menu" aria-labelledby="menuTitle">
+      <div class="section-shell">
+        <div class="section-intro reveal">
+          <p class="section-label">The Artisanal Ledger</p>
+          <h2 id="menuTitle">Toasties &amp; tea, <em>elevated.</em></h2>
+          <p>A small, considered menu. Everything toasted, brewed and brought to your table — never rushed, never reheated.</p>
         </div>
-        <p class="pour-label">01 — Grind</p>
-        <p class="pour-label pour-label-mid">02 — Pull</p>
-        <p class="pour-label pour-label-end">03 — Pour</p>
-      </div>
-      <div class="manifesto-text">
-        <p class="manifesto-quote">"Some cafes just serve coffee. This one remembers your order, makes your tea properly, and keeps your favourite toastie warm."</p>
-        <p class="manifesto-body">Park Lane has been quietly doing this since 2009 — coffee that's actually good, tea made to order for people who can tell the difference, and a toastie cabinet regulars raid on repeat. It's easy to walk past. Once you don't, you keep coming back.</p>
-        <p class="manifesto-aside">Ask a regular and they'll send you next door too — the op shop's just been renovated, and it's worth the detour.</p>
-      </div>
-    </div>
 
-    <div class="reviews">
-      <p class="reviews-kicker">What people say</p>
-      <div class="reviews-grid">
-        <blockquote class="review-card">
-          <p>"A cozy hidden gem with the kindest service — and a whole cabinet of toasties to pick from."</p>
-          <cite>Google review · Local Guide</cite>
-        </blockquote>
-        <blockquote class="review-card">
-          <p>"Finally, a place that makes real tea properly. My tea-snob friends approve."</p>
-          <cite>Google review</cite>
-        </blockquote>
-        <blockquote class="review-card">
-          <p>"Great toasties and croissant sandwiches — exactly what we needed on a quiet afternoon."</p>
-          <cite>Google review · Local Guide</cite>
-        </blockquote>
-      </div>
-    </div>
-  </section>
+        <div class="menu-list">
+          <article class="menu-item reveal">
+            <div class="menu-photo"><img src="assets/toastie.png" alt="A warm ham and gruyère croissant on a ceramic plate" loading="lazy"></div>
+            <div class="menu-copy">
+              <p class="item-meta"><span>01</span><i></i> Signature</p>
+              <h3>The Toastie Cabinet</h3>
+              <p>A whole cabinet of toasted sourdough sandwiches — ham &amp; gruyère croissant, crumbed chicken, the classic cheese. Each one pressed, buttered and brought to you hot.</p>
+              <p class="pairing">Pairs with a real leaf tea, brewed to order.</p>
+              <p class="price">A$12–16 <span></span></p>
+            </div>
+          </article>
 
-  <section id="menu" class="menu">
-    <div class="menu-header">
-      <p class="section-kicker">On the counter</p>
-      <h2>The Menu</h2>
-      <p class="section-lede">No frills. Just good coffee, real tea and a cabinet worth raiding.</p>
-    </div>
-    <div class="menu-columns">
-      <div class="menu-col">
-        <h3 class="menu-col-title">Coffee &amp; Tea</h3>
-        <div class="menu-row">
-          <span class="menu-name">Espresso</span>
-          <span class="menu-leader"></span>
-          <span class="menu-desc">Five Senses beans, pulled to order</span>
-        </div>
-        <div class="menu-row">
-          <span class="menu-name">Flat White</span>
-          <span class="menu-leader"></span>
-          <span class="menu-desc">The classic, done properly</span>
-        </div>
-        <div class="menu-row">
-          <span class="menu-name">Cappuccino</span>
-          <span class="menu-leader"></span>
-          <span class="menu-desc">Silky microfoam, classic ratio</span>
-        </div>
-        <div class="menu-row">
-          <span class="menu-name">Latte</span>
-          <span class="menu-leader"></span>
-          <span class="menu-desc">Smooth and mellow</span>
-        </div>
-        <div class="menu-row">
-          <span class="menu-name">Real Tea</span>
-          <span class="menu-leader"></span>
-          <span class="menu-desc">Brewed to order — not a bag in hot water</span>
-        </div>
-      </div>
-      <div class="menu-col">
-        <h3 class="menu-col-title">From the Cabinet</h3>
-        <div class="menu-row">
-          <span class="menu-name">Toasties</span>
-          <span class="menu-leader"></span>
-          <span class="menu-desc">A rotating selection — ask what's fresh</span>
-        </div>
-        <div class="menu-row">
-          <span class="menu-name">Croissants</span>
-          <span class="menu-leader"></span>
-          <span class="menu-desc">Plain, or ham &amp; cheese</span>
-        </div>
-        <div class="menu-row">
-          <span class="menu-name">Banana Bread</span>
-          <span class="menu-leader"></span>
-          <span class="menu-desc">A cafe classic, done right</span>
-        </div>
-        <div class="menu-row">
-          <span class="menu-name">Smashed Avo</span>
-          <span class="menu-leader"></span>
-          <span class="menu-desc">Simple, and exactly what it should be</span>
-        </div>
-        <div class="menu-row menu-row-note">
-          <span class="menu-desc">Menu changes with what's fresh — ask what's on today.</span>
-        </div>
-      </div>
-    </div>
-  </section>
+          <article class="menu-item menu-item-reverse reveal">
+            <div class="menu-photo"><img src="assets/avo.png" alt="Smashed avocado, feta and chilli on toasted sourdough" loading="lazy"></div>
+            <div class="menu-copy">
+              <p class="item-meta"><span>02</span><i></i> Brunch</p>
+              <h3>Smash Avo on Sourdough</h3>
+              <p>Smashed avocado on toasted sourdough, crumbled feta, chilli flakes, a squeeze of lemon. The unhurried Saturday in a single plate.</p>
+              <p class="pairing">Pairs with a flat white, extra hot.</p>
+              <p class="price">A$14 <span></span></p>
+            </div>
+          </article>
 
-  <section id="hours" class="hours">
-    <div class="hours-inner">
-      <div class="hours-status-block">
-        <p class="section-kicker">Right now</p>
-        <h2 id="hoursHeadline">—</h2>
-        <p class="hours-status-note" id="hoursNote">Checking today's hours…</p>
-      </div>
-      <table class="hours-table" id="hoursTable">
-        <tbody>
-          <tr data-day="1"><td>Monday</td><td>7:00 AM – 2:00 PM</td></tr>
-          <tr data-day="2"><td>Tuesday</td><td>7:00 AM – 2:00 PM</td></tr>
-          <tr data-day="3"><td>Wednesday</td><td>7:00 AM – 2:00 PM</td></tr>
-          <tr data-day="4"><td>Thursday</td><td>7:00 AM – 2:00 PM</td></tr>
-          <tr data-day="5"><td>Friday</td><td>7:00 AM – 2:00 PM</td></tr>
-          <tr data-day="6"><td>Saturday</td><td>8:00 AM – 2:00 PM</td></tr>
-          <tr data-day="0"><td>Sunday</td><td>Closed</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+          <article class="menu-item reveal">
+            <div class="menu-photo"><img src="assets/banana-bread.png" alt="Toasted banana bread with melting butter" loading="lazy"></div>
+            <div class="menu-copy">
+              <p class="item-meta"><span>03</span><i></i> Sweet</p>
+              <h3>Toasted Banana Bread</h3>
+              <p>A thick slice, toasted warm, butter melting into the crumb. The small, sweet reason to stay a little longer.</p>
+              <p class="pairing">Pairs with a cappuccino and the morning paper.</p>
+              <p class="price">A$8 <span></span></p>
+            </div>
+          </article>
 
-  <section id="contact" class="contact">
-    <div class="contact-inner">
-      <div class="contact-text">
-        <p class="section-kicker">Come visit us</p>
-        <h2>387 Clarendon St<br>South Melbourne VIC 3205</h2>
-        <p class="section-lede">Dine-in, takeaway or delivery — first come, first served for a table. LGBTQ+ friendly.</p>
-        <div class="contact-links">
-          <a href="https://www.google.com/maps/search/?api=1&query=Cafe+Park+Lane+387+Clarendon+St+South+Melbourne" target="_blank" rel="noopener" class="contact-link">Get Directions <span>↗</span></a>
-          <a href="#menu" class="contact-link">View Menu</a>
-          <a href="https://www.instagram.com/parklanecoffee/" target="_blank" rel="noopener" class="contact-link">Instagram <span>↗</span></a>
-          <a href="tel:+61490418134" class="contact-link">Call <span>↗</span></a>
+          <article class="menu-item menu-item-reverse reveal">
+            <div class="menu-photo"><img src="assets/tea.png" alt="A freshly poured cappuccino in a stoneware cup" loading="lazy"></div>
+            <div class="menu-copy">
+              <p class="item-meta"><span>04</span><i></i> House Specialty</p>
+              <h3>Real Tea, Brewed to Order</h3>
+              <p>Loose-leaf tea made properly, the way the tea snobs like it. A curated selection, steeped to the leaf and served with time to spare.</p>
+              <p class="pairing">Pairs with a quiet corner and chilled music.</p>
+              <p class="price">A$5–7 <span></span></p>
+            </div>
+          </article>
         </div>
       </div>
-      <div class="contact-map">
-        <iframe
-          src="https://www.google.com/maps?q=Cafe+Park+Lane,+387+Clarendon+St,+South+Melbourne+VIC+3205&z=16&output=embed"
-          title="Map to Park Lane Coffee, 387 Clarendon St, South Melbourne"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+    </section>
+
+    <section class="cafe-section" id="cafe" aria-labelledby="cafeTitle">
+      <div class="section-shell">
+        <div class="cafe-heading reveal">
+          <div>
+            <p class="section-label dark-label">The Neighborhood Pulse</p>
+            <h2 id="cafeTitle">A cozy hidden gem <em>on the lane.</em></h2>
+          </div>
+          <div class="rating" aria-label="4.4 out of 5 stars">
+            <span>★★★★<i>★</i></span>
+            <small>4.4 · 191 reviews</small>
+          </div>
+        </div>
+
+        <div class="photo-strip" aria-label="A glimpse inside Cafe Park Lane">
+          <figure><img src="assets/interior.png" alt="The warm, plant-filled interior of Cafe Park Lane" loading="lazy"><figcaption>The corner table, 9am</figcaption></figure>
+          <figure><img src="assets/tea.png" alt="Cappuccino with latte art" loading="lazy"><figcaption>Cappuccino, just poured</figcaption></figure>
+          <figure><img src="assets/toastie.png" alt="Warm ham and gruyère croissant" loading="lazy"><figcaption>Ham &amp; gruyère, still warm</figcaption></figure>
+          <figure><img src="assets/avo.png" alt="Smashed avocado on sourdough" loading="lazy"><figcaption>Saturday smash avo</figcaption></figure>
+          <figure><img src="assets/banana-bread.png" alt="Toasted banana bread" loading="lazy"><figcaption>Banana bread, toasted</figcaption></figure>
+          <figure><img src="assets/interior.png" alt="Cafe Park Lane on Clarendon Street" loading="lazy"><figcaption>Velvet &amp; brick, the lane</figcaption></figure>
+        </div>
+
+        <div class="review-grid">
+          <blockquote class="reveal"><p>“A lovely relaxing place to start my day with a great coffee and chilled music.”</p><cite>A regular morning</cite></blockquote>
+          <blockquote class="reveal"><p>“Such a cozy hidden gem with the kindest service ever. The perfect place for toasties.”</p><cite>Fufu · Local Guide</cite></blockquote>
+          <blockquote class="reveal"><p>“Real tea, made to order. I’m a tea snob and this place does it properly.”</p><cite>John B.</cite></blockquote>
+        </div>
+
+        <ul class="service-list" aria-label="Available services">
+          <li>Dine-in</li><li>Takeaway</li><li>Delivery</li><li>LGBTQ+ friendly</li>
+        </ul>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section class="visit-section" id="visit" aria-labelledby="visitTitle">
+      <div class="section-shell visit-grid">
+        <div class="visit-main reveal">
+          <p class="section-label">The Journey</p>
+          <h2 id="visitTitle"><span id="visitHeadline">Open at 7 AM —</span> <em>we’ll have the kettle on.</em></h2>
+          <div class="address-block">
+            <p class="mini-label">Find us</p>
+            <address>387 Clarendon St<br><span>South Melbourne VIC 3205, Australia</span></address>
+          </div>
+          <div class="clock-row">
+            <div class="clock" aria-hidden="true"><span class="hour-hand" id="hourHand"></span><span class="minute-hand" id="minuteHand"></span><span class="clock-pin"></span></div>
+            <div class="clock-copy"><strong id="visitTime">Melbourne time</strong><em id="visitNote">The kettle’s resting. See you at 7 AM.</em></div>
+          </div>
+          <div class="visit-actions">
+            <a class="light-button" href="https://www.google.com/maps/dir/?api=1&destination=Cafe+Park+Lane+387+Clarendon+St+South+Melbourne" target="_blank" rel="noopener">Get Directions</a>
+            <a class="dark-button" href="tel:+61490418134">Call Ahead</a>
+          </div>
+        </div>
+
+        <div class="hours reveal">
+          <p class="mini-label">Opening hours</p>
+          <dl>
+            <div data-day="1"><dt>Monday</dt><dd>7:00 AM – 2:00 PM</dd></div>
+            <div data-day="2"><dt>Tuesday</dt><dd>7:00 AM – 2:00 PM</dd></div>
+            <div data-day="3"><dt>Wednesday</dt><dd>7:00 AM – 2:00 PM</dd></div>
+            <div data-day="4"><dt>Thursday</dt><dd>7:00 AM – 2:00 PM</dd></div>
+            <div data-day="5"><dt>Friday</dt><dd>7:00 AM – 2:00 PM</dd></div>
+            <div data-day="6"><dt>Saturday</dt><dd>8:00 AM – 2:00 PM</dd></div>
+            <div data-day="0"><dt>Sunday</dt><dd>Closed</dd></div>
+          </dl>
+          <p class="hours-note">Updated by the café. Kettle’s always ready by 7.</p>
+        </div>
+        <div class="map-wrap">
+          <iframe src="https://www.google.com/maps?q=Cafe+Park+Lane,+387+Clarendon+St,+South+Melbourne+VIC+3205&amp;z=16&amp;output=embed" title="Map to Cafe Park Lane, 387 Clarendon St, South Melbourne" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="#top" class="footer-logo">
-          <svg viewBox="0 0 32 32" class="footer-logo-mark" aria-hidden="true">
-            <path d="M6 12h17l-1.4 11.2A3 3 0 0 1 18.6 26H12.4a3 3 0 0 1-3-2.8L8 12z" fill="none" stroke="currentColor" stroke-width="1.6"/>
-            <path d="M23 14c3 0 5 1.8 5 4.3s-2 4.3-5 4.1" fill="none" stroke="currentColor" stroke-width="1.6"/>
-          </svg>
-          <span>Park Lane</span>
-        </a>
-        <div class="footer-social">
-          <a href="https://www.instagram.com/parklanecoffee/" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></svg>
-          </a>
-          <a href="tel:+61490418134" aria-label="Call">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 4h3l1.4 4-2 1.5a12 12 0 0 0 5.5 5.5l1.5-2 4 1.4v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 6.2 2 2 0 0 1 6.6 4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Cafe+Park+Lane+387+Clarendon+St+South+Melbourne" target="_blank" rel="noopener" aria-label="Directions">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8 2 5 5.2 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.8-3-7-7-7z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="footer-meta">
-        <p>387 Clarendon St, South Melbourne VIC 3205</p>
-        <p class="footer-fine">Website concept for Cafe Park Lane · <a href="https://mateordgz.dev" target="_blank" rel="noopener">Website by Mateo Rodríguez</a></p>
-      </div>
+      <div><p class="footer-brand">Cafe Park Lane</p><p>A hidden gem on Clarendon Street, South Melbourne.<br>Real tea, toasties, and sun-drenched mornings since 2009.</p></div>
+      <div><p>387 Clarendon St, South Melbourne VIC 3205</p><p>Mon–Fri 7–2 · Sat 8–2 · Sun closed</p><p><a href="tel:+61490418134">0490 418 134</a> · <a href="https://www.instagram.com/parklanecoffee/" target="_blank" rel="noopener">Instagram</a></p></div>
+      <p>© 2026 Cafe Park Lane<br><a href="https://mateordgz.dev" target="_blank" rel="noopener">Website by Mateo Rodríguez</a></p>
     </div>
   </footer>
 
+  <a class="pickup-button" href="https://www.google.com/maps/dir/?api=1&destination=Cafe+Park+Lane+387+Clarendon+St+South+Melbourne" target="_blank" rel="noopener">Order for<br>Pickup</a>
   <script src="script.js"></script>
 </body>
 </html>
