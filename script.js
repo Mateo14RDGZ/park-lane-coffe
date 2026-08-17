@@ -89,7 +89,7 @@ function updateMelbourneTime() {
 }
 
 function updateHeader() {
-  header?.classList.toggle('scrolled', window.scrollY > 24);
+  header?.classList.toggle('scrolled', window.scrollY > 4);
 }
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
