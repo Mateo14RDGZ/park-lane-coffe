@@ -121,13 +121,10 @@ address span { color: rgba(243,240,235,.62); font-family: var(--sans); font-size
 .map-wrap { grid-column: 1 / -1; height: 320px; overflow: hidden; border: 1px solid var(--line-dark); }
 .map-wrap iframe { width: 100%; height: 100%; border: 0; filter: invert(.9) hue-rotate(170deg) saturate(.45) brightness(.63) contrast(1.08); }
 
-.footer { background: var(--paper); color: rgba(24,18,16,.58); padding: 4.5rem 0 8.5rem; font-size: .7rem; letter-spacing: .08em; }
+.footer { background: var(--paper); color: rgba(24,18,16,.58); padding: 4.5rem 0; font-size: .7rem; letter-spacing: .08em; }
 .footer-inner { width: var(--shell); margin: 0 auto; display: grid; gap: 2rem; }
 .footer-brand { margin-bottom: .7rem; color: var(--ink); font-family: var(--serif); font-size: 1.7rem; letter-spacing: 0; }
 .footer a { text-underline-offset: 3px; }
-.pickup-button { position: fixed; z-index: 55; bottom: 18px; left: 50%; width: 180px; height: 60px; display: grid; place-items: center; border-radius: 999px; background: var(--accent); color: var(--ink); font-size: .64rem; font-weight: 600; letter-spacing: .22em; line-height: 1.35; text-align: center; text-decoration: none; text-transform: uppercase; transform: translateX(-50%); box-shadow: 0 12px 35px rgba(14,9,7,.25); transition: background .25s ease, transform .25s ease; }
-.pickup-button:active { transform: translateX(-50%) scale(.97); }
-
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
 .reveal.is-visible { opacity: 1; transform: none; }
 
@@ -136,7 +133,6 @@ address span { color: rgba(243,240,235,.62); font-family: var(--sans); font-size
   .menu-item:hover .menu-photo img { transform: scale(1.035); }
   .light-button:hover { background: var(--accent); border-color: var(--accent); }
   .dark-button:hover { background: rgba(243,240,235,.08); }
-  .pickup-button:hover { background: #d18e70; transform: translateX(-50%) translateY(-3px); }
   .desktop-nav a:hover, .directions-link:hover { color: var(--paper); }
 }
 
@@ -168,7 +164,7 @@ address span { color: rgba(243,240,235,.62); font-family: var(--sans); font-size
   .clock-copy strong { font-size: .63rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; }
   .clock-copy em { max-width: 180px; color: #cf9b7b; font-size: 1rem; }
   .map-wrap { height: 360px; }
-  .footer { padding: 4rem 0 6rem; }
+  .footer { padding: 4rem 0; }
   .footer-inner { grid-template-columns: 1.3fr 1fr auto; align-items: end; }
 }
 
