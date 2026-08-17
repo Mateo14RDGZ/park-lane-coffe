@@ -367,13 +367,18 @@ a { color: inherit; }
   position: absolute;
   bottom: 1.5rem;
   left: 50%;
-  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
   opacity: 0;
-  animation: fadeUp 700ms var(--ease-out) 1100ms forwards;
+  transform: translateX(-50%) translateY(14px);
+  animation: fadeUpCentered 700ms var(--ease-out) 1100ms forwards;
+}
+
+@keyframes fadeUpCentered {
+  from { opacity: 0; transform: translateX(-50%) translateY(14px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
 .scroll-cue-line {
@@ -1007,13 +1012,18 @@ a { color: inherit; }
   .hero-wordmark,
   .hero-sub,
   .hero-cta,
-  .scroll-cue,
   .review-card,
   .menu-row {
     animation: none !important;
     opacity: 1 !important;
     clip-path: none !important;
     transform: none !important;
+  }
+
+  .scroll-cue {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: translateX(-50%) !important;
   }
 
   .status-dot.is-open,

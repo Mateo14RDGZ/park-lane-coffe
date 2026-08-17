@@ -45,9 +45,12 @@ function updatePour() {
   if (!manifesto || !liquid) return;
   const rect = manifesto.getBoundingClientRect();
   const vh = window.innerHeight;
-  const total = rect.height + vh * 0.6;
-  const progressed = vh * 0.8 - rect.top;
-  const progress = Math.min(1, Math.max(0, progressed / total));
+  // Fill starts as soon as the section is barely on screen and finishes
+  // well within one viewport of scrolling, regardless of section height,
+  // so it doesn't lag behind while reading the text next to it.
+  const startTrigger = vh * 0.92;
+  const endTrigger = vh * 0.15;
+  const progress = Math.min(1, Math.max(0, (startTrigger - rect.top) / (startTrigger - endTrigger)));
   liquid.style.transform = `scaleY(${progress})`;
 
   const stage = progress < 0.34 ? 0 : progress < 0.7 ? 1 : 2;
