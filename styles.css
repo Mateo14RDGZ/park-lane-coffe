@@ -1096,6 +1096,45 @@ a { color: inherit; }
   .doorway-caption { font-size: 1.1rem; }
 }
 
+/* =========================================================
+   Center everything below the desktop editorial layout
+   (mobile + tablet, < 900px) for a clean, symmetric read
+   ========================================================= */
+@media (max-width: 899.98px) {
+  .nav-overlay { align-items: center; }
+  .overlay-footer { text-align: center; }
+
+  .manifesto-text,
+  .pillar,
+  .menu-header,
+  .menu-col,
+  .hours-status-block,
+  .contact-text {
+    text-align: center;
+  }
+
+  .manifesto-quote,
+  .manifesto-body,
+  .manifesto-aside,
+  .section-lede {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .rating-badge {
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .menu-row { align-items: center; }
+  .menu-name, .menu-desc { text-align: center; }
+
+  .contact-links { justify-content: center; }
+
+  .footer-bottom { align-items: center; text-align: center; }
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
