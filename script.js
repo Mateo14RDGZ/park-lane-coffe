@@ -123,8 +123,8 @@ if (!reduceMotion) {
   liquid.style.transform = 'scaleY(1)';
 }
 
-/* ---------- Reveal on scroll (pillars, menu rows) ---------- */
-const revealTargets = document.querySelectorAll('.pillar, .menu-row');
+/* ---------- Reveal on scroll (review cards, menu rows) ---------- */
+const revealTargets = document.querySelectorAll('.review-card, .menu-row');
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
